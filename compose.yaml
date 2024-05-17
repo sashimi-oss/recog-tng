@@ -1,0 +1,33 @@
+services:
+  app:
+    build: .
+    tty: true
+    ports:
+      - "5001:5001"
+    container_name: app
+    links:
+      - db 
+    privileged: true
+    volumes:
+      - .:/app
+    environment:
+        TZ: Asia/Tokyo
+        FLASK_ENV: 'development'    #デバッグモードON
+
+  db:
+    # platform: linux/x86_64 // この行を追加。
+    platform: linux/amd64
+    container_name: flask-todo-pra
+    image: mysql:8.0
+    environment:
+      MYSQL_ROOT_PASSWORD: root
+      MYSQL_DATABASE: todo
+      MYSQL_USER: hoge
+      MYSQL_PASSWORD: fuga
+      TZ: 'Asia/Tokyo'
+    command: mysqld --character-set-server=utf8mb4 --collation-server=utf8mb4_unicode_ci
+    volumes:
+      - ./db/data:/var/lib/mysql
+      - ./db/sql:/docker-entrypoint-initdb.d
+    ports:
+      - 3306:3306

@@ -1,0 +1,6 @@
+#data
+/db/data/*
+!/db/data/*/.gitkeep
+#sql
+/db/sql/*
+!/db/sql/*/.gitkeep
