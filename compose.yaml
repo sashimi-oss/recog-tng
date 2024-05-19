@@ -17,11 +17,11 @@ services:
   db:
     # platform: linux/x86_64 // この行を追加。
     platform: linux/amd64
-    container_name: flask-todo-pra
+    container_name: recog-tng-app
     image: mysql:8.0
     environment:
       MYSQL_ROOT_PASSWORD: root
-      MYSQL_DATABASE: todo
+      MYSQL_DATABASE: recog
       MYSQL_USER: hoge
       MYSQL_PASSWORD: fuga
       TZ: 'Asia/Tokyo'

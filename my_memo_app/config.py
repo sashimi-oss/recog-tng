@@ -12,6 +12,6 @@ class Config(object):
     SQLALCHEMY_DATABASE_URI = 'mysql+pymysql://{user}:{password}@{host}/{database}?charset=utf8mb4'.format(**{
         'user': os.getenv('DB_USER', 'hoge'),
         'password': os.getenv('DB_PASSWORD', 'fuga'),
-        'host': os.getenv('DB_HOST', 'flask-todo-pra'),
-        'database': os.getenv('DB_DATABASE', 'todo')
+        'host': os.getenv('DB_HOST', 'recog-tng-app'),#container名
+        'database': os.getenv('DB_DATABASE', 'recog')
     })
