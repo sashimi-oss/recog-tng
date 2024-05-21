@@ -1,6 +1,6 @@
 from flask import render_template, request, redirect, url_for
 from app import app
-from models import db, User, Role, Recog
+from models import db, Recog
 
 # ==================================================
 # ルーティング
@@ -14,17 +14,20 @@ def index():
 #男性の役柄トレーニング
 @app.route("/men")
 def men():
-    return render_template("men.html")
+    return 'men dayo'
+    # return render_template("men.html")
 
 #女性の役柄トレーニング
 @app.route("/women")
 def women():
-    return render_template("women.html")
+    return 'women dayo'
+    # return render_template("women.html")
 
 #全ての役柄トレーニング
 @app.route("/all")
 def all():
-    return render_template("all.html")
+    return 'all dayo'
+    # return render_template("all.html")
 
 
 
