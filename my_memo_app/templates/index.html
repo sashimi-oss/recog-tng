@@ -1,9 +1,13 @@
 {% extends "base.html" %}
 
 {% block content %}
-<a href="{{url_for('all')}}">全ての役柄</a>
-<a href="{{url_for('men')}}">男性役柄</a>
-<a href="{{url_for('women')}}">女性役柄</a>
+
+<h1>選んでください</h1>
+<ul>
+    <li><a href="{{url_for('all')}}">全ての役柄</a></li>
+    <li><a href="{{url_for('men')}}">男性の役柄のみ</a></li>
+    <li><a href="{{url_for('women')}}">女性の役柄のみ</a></li>
+</ul>
 
 <script type="text/javascript" src="{{url_for('static', filename='js/index.js')}}"></script>
 
