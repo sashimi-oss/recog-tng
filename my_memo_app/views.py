@@ -1,6 +1,6 @@
 from flask import render_template, request, redirect, url_for
 from app import app
-from models import db, User, Role, Recog
+from models import db, Recog
 
 # ==================================================
 # ルーティング
