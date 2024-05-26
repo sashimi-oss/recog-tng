@@ -1,5 +1,6 @@
 from flask_sqlalchemy import SQLAlchemy
 from datetime import datetime
+import pytz
 
 # Flask-SQLAlchemyの生成
 db = SQLAlchemy()
@@ -32,6 +33,6 @@ class Recog(db.Model):
     # ID（PK）
     id = db.Column(db.Integer, primary_key=True, autoincrement=True)
     # 役柄名（NULL許可しない） 話者認識結果
-    result = db.Column(db.Integer, nullable=False)
+    result = db.Column(db.String(20), nullable=False)
     #　入力時
-    date = db.Column(db.DateTime, default=datetime.utcnow)
+    date = db.Column(db.DateTime, default=datetime.now(pytz.timezone('Asia/Tokyo')))

@@ -14,6 +14,8 @@ db.init_app(app)
 migrate = Migrate(app, db)
 # viewsのインポート
 from views import *
+# recogのインポート
+from recog import *
 
 # ==================================================
 # 実行
