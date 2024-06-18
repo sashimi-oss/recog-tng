@@ -19,12 +19,16 @@ def recog_all():
         with open('all.pickle', mode='rb') as f:
             final_model = pickle.load(f)
 
-        db.drop_all()
-        db.create_all()
+        # db.drop_all()
+        # db.create_all()
+        # dropじゃなくてdeleteがよさそう
         
         file = request.files['file']
         file.save(os.path.join('./audio', 'uploaded.wav'))
-        preVC = predictFunction.predictPostAudio(final_model)
+        vcAct = {0:"おじいさん", 1:"おばあさん", 2:"少年",
+            3:"男の子", 4:"女の子", 5:"少女",
+            6:"青年女", 7:"青年男", 8:"おじさん", 9:"おばさん"}
+        preVC = predictFunction.predictPostAudio(final_model, vcAct)
         #このpreVCをDBに保存して処理を終了とする　最後に値をDBから持ってきて表示させる予定
         # 登録処理
         recog_result = Recog(result=preVC)
@@ -46,7 +50,8 @@ def recog_men():
         
         file = request.files['file']
         file.save(os.path.join('./audio', 'uploaded.wav'))
-        preVC = predictFunction.predictPostAudio(final_model)
+        vcAct = {0:"おじいさん", 1:"少年", 2:"男の子", 3:"青年男", 4:"おじさん"}
+        preVC = predictFunction.predictPostAudio(final_model, vcAct)
         #このpreVCをDBに保存して処理を終了とする　最後に値をDBから持ってきて表示させる予定
 
         return "none"
@@ -64,11 +69,16 @@ def recog_women():
         
         file = request.files['file']
         file.save(os.path.join('./audio', 'uploaded.wav'))
-        preVC = predictFunction.predictPostAudio(final_model)
+        vcAct = {0:"おばあさん", 1:"女の子", 2:"少女", 3:"青年女", 4:"おばさん"}
+        preVC = predictFunction.predictPostAudio(final_model, vcAct)
         #このpreVCをDBに保存して処理を終了とする　最後に値をDBから持ってきて表示させる予定
+        # 登録処理
+        recog_result = Recog(result=preVC)
+        db.session.add(recog_result)
+        db.session.commit()
 
         return "none"
-    return "none"
+    return "アクセスできる？"
 
 
 

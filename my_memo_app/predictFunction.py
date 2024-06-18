@@ -5,7 +5,7 @@ import librosa
 from pycaret.classification import *
 
 
-def predictPostAudio(final_model):
+def predictPostAudio(final_model, vcAct):
 
     y, sr = librosa.load('./audio/uploaded.wav')
     mfcc = librosa.feature.mfcc(y=y, sr=sr)
@@ -30,10 +30,6 @@ def predictPostAudio(final_model):
     pred = predict_model(final_model, data = predict)
 
     numbers = pred.prediction_label[0]
-
-    vcAct = {0:"おじいさん", 1:"おばあさん", 2:"少年(白上虎太郎)",
-            3:"男の子(月読ショウタ)", 4:"女の子", 5:"少女",
-            6:"青年女", 7:"青年男", 8:"おじさん", 9:"おばさん"}
 
     if numbers in vcAct:
         preVC = vcAct[numbers]
