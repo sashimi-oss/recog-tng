@@ -34,6 +34,11 @@ let audioData = [];
 let bufferSize = 1024;
 //******************************** */
 
+//******************************** */
+//以下、videoのための変数
+const videoElem = document.getElementById('videoElem');
+//******************************** */
+
 //sCutはsceanCutの略、シーンとカットを制御する関数
 function sCut(sceanCnt) {
   display.innerHTML = scean[sceanCnt][cutCnt];
@@ -71,6 +76,7 @@ btn.addEventListener('click', () => {
 });
 
 recStart.addEventListener('click', () => {
+  videoElem.play();
   sCutFlag();
 
   navigator.mediaDevices.getUserMedia({ audio: true, video: false })

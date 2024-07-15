@@ -8,6 +8,19 @@
 <button id="recStop" disabled>録音停止</button>
 <a hidden id="download">Download</a>
 
+<div class="videoZone">
+  <video controls width="250" id="videoElem">
+    <source src="{{url_for('static', filename='video/shoujo.mp4')}}" type="video/mp4" />
+  </video>
+</div>
+
+<!-- <div class="audioZone">
+  <button id = "btn">音が鳴るよ！</button>
+  <audio id = "btn_audio">
+    <source src="" type="audio/wav" media="" />
+  </audio>
+</div> -->
+
 
 <script type="text/javascript" src="{{url_for('static', filename='js/women.js')}}"></script>
 

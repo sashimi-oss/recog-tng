@@ -53,6 +53,10 @@ def recog_men():
         vcAct = {0:"おじいさん", 1:"少年", 2:"男の子", 3:"青年男", 4:"おじさん"}
         preVC = predictFunction.predictPostAudio(final_model, vcAct)
         #このpreVCをDBに保存して処理を終了とする　最後に値をDBから持ってきて表示させる予定
+        # 登録処理
+        recog_result = Recog(result=preVC)
+        db.session.add(recog_result)
+        db.session.commit()
 
         return "none"
     return "none"
