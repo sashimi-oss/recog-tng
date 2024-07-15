@@ -61,8 +61,8 @@ def recog_men():
         return "none"
     return "none"
 
-@app.route("/recog_women" , methods=["GET", "POST"])
-def recog_women():
+@app.route("/recog_women0" , methods=["GET", "POST"])
+def recog_women0():
     # POST時
     if request.method == "POST":
         #returnで映すものない、処理だけを書き込みたい
@@ -84,5 +84,96 @@ def recog_women():
         return "none"
     return "アクセスできる？"
 
+@app.route("/recog_women1" , methods=["GET", "POST"])
+def recog_women1():
+    # POST時
+    if request.method == "POST":
+        #returnで映すものない、処理だけを書き込みたい
+        #formじゃなくてfetchでやれば行ける説
+        
+        with open('women.pickle', mode='rb') as f:
+            final_model = pickle.load(f)
+        
+        file = request.files['file']
+        file.save(os.path.join('./audio', 'uploaded.wav'))
+        vcAct = {0:"おばあさん", 1:"女の子", 2:"少女", 3:"青年女", 4:"おばさん"}
+        preVC = predictFunction.predictPostAudio(final_model, vcAct)
+        #このpreVCをDBに保存して処理を終了とする　最後に値をDBから持ってきて表示させる予定
+        # 登録処理
+        recog_result = Recog(result=preVC)
+        db.session.add(recog_result)
+        db.session.commit()
+
+        return "none"
+    return "アクセスできる？"
+
+@app.route("/recog_women2" , methods=["GET", "POST"])
+def recog_women2():
+    # POST時
+    if request.method == "POST":
+        #returnで映すものない、処理だけを書き込みたい
+        #formじゃなくてfetchでやれば行ける説
+        
+        with open('women.pickle', mode='rb') as f:
+            final_model = pickle.load(f)
+        
+        file = request.files['file']
+        file.save(os.path.join('./audio', 'uploaded.wav'))
+        vcAct = {0:"おばあさん", 1:"女の子", 2:"少女", 3:"青年女", 4:"おばさん"}
+        preVC = predictFunction.predictPostAudio(final_model, vcAct)
+        #このpreVCをDBに保存して処理を終了とする　最後に値をDBから持ってきて表示させる予定
+        # 登録処理
+        recog_result = Recog(result=preVC)
+        db.session.add(recog_result)
+        db.session.commit()
+
+        return "none"
+    return "アクセスできる？"
+
+@app.route("/recog_women3" , methods=["GET", "POST"])
+def recog_women3():
+    # POST時
+    if request.method == "POST":
+        #returnで映すものない、処理だけを書き込みたい
+        #formじゃなくてfetchでやれば行ける説
+        
+        with open('women.pickle', mode='rb') as f:
+            final_model = pickle.load(f)
+        
+        file = request.files['file']
+        file.save(os.path.join('./audio', 'uploaded.wav'))
+        vcAct = {0:"おばあさん", 1:"女の子", 2:"少女", 3:"青年女", 4:"おばさん"}
+        preVC = predictFunction.predictPostAudio(final_model, vcAct)
+        #このpreVCをDBに保存して処理を終了とする　最後に値をDBから持ってきて表示させる予定
+        # 登録処理
+        recog_result = Recog(result=preVC)
+        db.session.add(recog_result)
+        db.session.commit()
+
+        return "none"
+    return "アクセスできる？"
+
+@app.route("/recog_women4" , methods=["GET", "POST"])
+def recog_women4():
+    # POST時
+    if request.method == "POST":
+        #returnで映すものない、処理だけを書き込みたい
+        #formじゃなくてfetchでやれば行ける説
+        
+        with open('women.pickle', mode='rb') as f:
+            final_model = pickle.load(f)
+        
+        file = request.files['file']
+        file.save(os.path.join('./audio', 'uploaded.wav'))
+        vcAct = {0:"おばあさん", 1:"女の子", 2:"少女", 3:"青年女", 4:"おばさん"}
+        preVC = predictFunction.predictPostAudio(final_model, vcAct)
+        #このpreVCをDBに保存して処理を終了とする　最後に値をDBから持ってきて表示させる予定
+        # 登録処理
+        recog_result = Recog(result=preVC)
+        db.session.add(recog_result)
+        db.session.commit()
+
+        return "none"
+    return "アクセスできる？"
 
 

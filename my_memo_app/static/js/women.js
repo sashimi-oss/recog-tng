@@ -23,6 +23,7 @@ let recStop = document.getElementById('recStop');
 let cutCnt = 0;
 let flag = 0;
 let num = 0;
+let i = 0;
 
 //******************************** */
 // 以下Recorederのための変数
@@ -65,6 +66,7 @@ function sCutFlag(){
   if (flag === 1){//カット（その役柄のセリフ）が終わったら
       console.log('セリフ終わり！');
       num++;//sceanをインクリメント（次の役柄のシナリオへ）
+      i++;
   } else {
       console.log('セリフ続くよ');
   }
@@ -123,7 +125,7 @@ function uploadAudio() {
   let formData = new FormData();
   formData.append('file', blob, 'test.wav');
 
-  fetch('/recog_women', {
+  fetch(`/recog_women${i}`, {
     method: 'POST',
     body: formData
   })
