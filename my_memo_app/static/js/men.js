@@ -45,15 +45,15 @@ function sCut(sceanCnt) {
   if (cutCnt === scean[sceanCnt].length - 1){//セリフ終わったら
       flag = 1;//次の役柄シナリオにいくためのフラグ
       cutCnt = 0;
-  } else {
-    if(cutCnt === 0 && sceanCnt !== 1){
-      videoCnt();
-      videoNum++;
-    }
-    if(cutCnt === 1 && sceanCnt !== 1){
-      let videoElem = document.getElementById('videoElem');
-      videoElem.play();
-    }
+  } else {  //cutCnt進めたりvideo再生したり
+      if(cutCnt === 0 && sceanCnt !== 1){  //そのシーンの最初のカットに動画表示
+        videoCnt();
+        videoNum++;
+      }
+      if(cutCnt === 1 && sceanCnt !== 1){  //こんにちはのカットで動画再生
+        let videoElem = document.getElementById('videoElem');
+        videoElem.play();
+      }
       cutCnt++;//カット（セリフ）をインクリメント
       if ((cutCnt === 2) && (sceanCnt != 1)) {//trueの時録音する。※sceanCnt条件は、あらすじ表示時に録音してしまうのを防ぐため
         recStart.removeAttribute('disabled');//押せる
