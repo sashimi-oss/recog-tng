@@ -1,0 +1,20 @@
+body {
+  background-color: skyblue;
+  display: flex;
+  justify-content: center;
+  align-items: center; 
+  flex-direction: column;
+}
+
+.display {
+  order: 0;
+}
+
+.btnArea {
+  order: 2;
+}
+
+.videoZone {
+  background-color: skyblue;
+  order: 1;
+}

@@ -13,8 +13,6 @@ import pickle
 def recog_all():
     # POST時
     if request.method == "POST":
-        #returnで映すものない、処理だけを書き込みたい
-        #formじゃなくてfetchでやれば行ける説
         
         with open('all.pickle', mode='rb') as f:
             final_model = pickle.load(f)
@@ -29,7 +27,7 @@ def recog_all():
             3:"男の子", 4:"女の子", 5:"少女",
             6:"青年女", 7:"青年男", 8:"おじさん", 9:"おばさん"}
         preVC = predictFunction.predictPostAudio(final_model, vcAct)
-        #このpreVCをDBに保存して処理を終了とする　最後に値をDBから持ってきて表示させる予定
+
         # 登録処理
         recog_result = Recog(result=preVC)
         db.session.add(recog_result)
@@ -42,8 +40,6 @@ def recog_all():
 def recog_men():
     # POST時
     if request.method == "POST":
-        #returnで映すものない、処理だけを書き込みたい
-        #formじゃなくてfetchでやれば行ける説
         
         with open('men.pickle', mode='rb') as f:
             final_model = pickle.load(f)
@@ -52,7 +48,7 @@ def recog_men():
         file.save(os.path.join('./audio', 'uploaded.wav'))
         vcAct = {0:"おじいさん", 1:"少年", 2:"男の子", 3:"青年男", 4:"おじさん"}
         preVC = predictFunction.predictPostAudio(final_model, vcAct)
-        #このpreVCをDBに保存して処理を終了とする　最後に値をDBから持ってきて表示させる予定
+
         # 登録処理
         recog_result = Recog(result=preVC)
         db.session.add(recog_result)
@@ -65,8 +61,6 @@ def recog_men():
 def recog_women():
     # POST時
     if request.method == "POST":
-        #returnで映すものない、処理だけを書き込みたい
-        #formじゃなくてfetchでやれば行ける説
         
         with open('women.pickle', mode='rb') as f:
             final_model = pickle.load(f)
@@ -75,7 +69,7 @@ def recog_women():
         file.save(os.path.join('./audio', 'uploaded.wav'))
         vcAct = {0:"おばあさん", 1:"女の子", 2:"少女", 3:"青年女", 4:"おばさん"}
         preVC = predictFunction.predictPostAudio(final_model, vcAct)
-        #このpreVCをDBに保存して処理を終了とする　最後に値をDBから持ってきて表示させる予定
+
         # 登録処理
         recog_result = Recog(result=preVC)
         db.session.add(recog_result)

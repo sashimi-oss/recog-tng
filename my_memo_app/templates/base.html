@@ -3,9 +3,19 @@
 <head>
     <meta charset="UTF-8">
     <title>発話トレーニングシステム</title>
+    <link rel="stylesheet" href="{{url_for('static', filename='css/style.css')}}">
 </head>
 <body>
+    <div id="display"></div>
+
+    <div class="btnArea">
+        <button id="btn">ボタン</button>
+        <button id="recStart" disabled>録音開始</button>
+        <button id="recStop" disabled>録音停止</button>
+        <a hidden id="download">Download</a>
+    </div>
     
+    <div class="videoZone"></div>
     {% block content %}{% endblock %}
 </body>
 </html>

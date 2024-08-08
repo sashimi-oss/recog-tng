@@ -30,6 +30,10 @@ let display = document.getElementById('display');
 let btn = document.getElementById('btn');
 let recStart = document.getElementById('recStart');
 let recStop = document.getElementById('recStop');
+let videoZone = document.querySelector('.videoZone');
+let videoNum = -2;
+let videoArr = ['otokonoko', 'onnnanoko', 'shounenn', 'shoujo', 'seinennMan', 'seinennWoman', 'uncle', 'aunt', 'grandpa', 'grandma'];
+let videoElem = document.getElementById('videoElem');
 let cutCnt = 0;
 let flag = 0;
 let num = 0;
@@ -64,12 +68,21 @@ function sCut(sceanCnt) {
   }
 };
 
+function videoCnt() {
+  videoZone.innerHTML=`
+  <video controls width="700" id="videoElem"> 
+    <source src="/static/video/${videoArr[videoNum]}.mp4" type="video/mp4" /> 
+  </video>`;
+}
+
 //sCut関数実行のあと、flagチェックする関数
 function sCutFlag(){
   sCut(num);//真引数 num は 仮引数 sceanCntと対応
+  videoCnt();
   if (flag === 1){//カット（その役柄のセリフ）が終わったら
       console.log('セリフ終わり！');
       num++;//sceanをインクリメント（次の役柄のシナリオへ）
+      videoNum++;
   } else {
       console.log('セリフ続くよ');
   }

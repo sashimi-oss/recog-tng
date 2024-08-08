@@ -4,7 +4,7 @@ const sceanOtokonoko = ['おや、そこに男の子がやってきました。'
 const sceanShounenn = ['次の日、そこに少年がやってきました。', '少年「こんにちは」', '妖精さん「こんにちは」', '少年はニコっとして、木に登りました。', '妖精さんも同じように木に登りました。', 'ふたりは、時間を忘れて楽しみました。', '妖精さんは「今日は楽しい一日だったな」とおもいました。'];
 const sceanSeinennMan = ['次の日、そこに青年の男性がやってきました。', '青年の男性「こんにちは」', '妖精さん「こんにちは」', '青年の男性はニコっとして、魚釣りをしました。', '妖精さんも同じように、真似して魚釣りをしました。', 'ふたりは、時間を忘れて楽しみました。', '妖精さんは「今日は楽しい一日だったな」とおもいました。'];
 const sceanUncle = ['次の日、そこにおじさんがやってきました。', 'おじさん「こんにちは」', '妖精さん「こんにちは」', 'おじさんはニコっとして、薪を集めました。', '妖精さんも同じように、真似して薪を集めました。', 'ふたりは、時間を忘れて汗を流しました。', '妖精さんは「今日は楽しい一日だったな」とおもいました。'];
-const sceanGrandpa = ['次の日、そこにおじいさんがやってきました。', 'おじいさん「こんにちは」', '妖精さん「こんにちは」', 'おじいさんはニコっとして、川のほとりに座りました。', '妖精さんも同じように、真似して川のほとりに座りました。', 'ふたりは、時間を忘れて汗を流しました？？。', '妖精さんは「今日は楽しい一日だったな」とおもいました。'];
+const sceanGrandpa = ['次の日、そこにおじいさんがやってきました。', 'おじいさん「こんにちは」', '妖精さん「こんにちは」', 'おじいさんはニコっとして、川のほとりに座りました。', '妖精さんも同じように、真似して川のほとりに座りました。', 'ふたりは、時間を忘れて汗を流しました。', '妖精さんは「今日は楽しい一日だったな」とおもいました。'];
 
 const scean = [
   sceanTitle,
@@ -16,10 +16,14 @@ const scean = [
   sceanGrandpa,
 ];
 
+//シナリオとビデオ表示に関する変数
 let display = document.getElementById('display');
 let btn = document.getElementById('btn');
 let recStart = document.getElementById('recStart');
 let recStop = document.getElementById('recStop');
+let videoZone = document.querySelector('.videoZone');
+let videoNum = 0;
+let videoArr = ['otokonoko', 'shounenn', 'seinennMan', 'uncle', 'grandpa'];
 let cutCnt = 0;
 let flag = 0;
 let num = 0;
@@ -42,6 +46,14 @@ function sCut(sceanCnt) {
       flag = 1;//次の役柄シナリオにいくためのフラグ
       cutCnt = 0;
   } else {
+    if(cutCnt === 0 && sceanCnt !== 1){
+      videoCnt();
+      videoNum++;
+    }
+    if(cutCnt === 1 && sceanCnt !== 1){
+      let videoElem = document.getElementById('videoElem');
+      videoElem.play();
+    }
       cutCnt++;//カット（セリフ）をインクリメント
       if ((cutCnt === 2) && (sceanCnt != 1)) {//trueの時録音する。※sceanCnt条件は、あらすじ表示時に録音してしまうのを防ぐため
         recStart.removeAttribute('disabled');//押せる
@@ -58,11 +70,18 @@ function sCut(sceanCnt) {
 function sCutFlag(){
   sCut(num);//真引数 num は 仮引数 sceanCntと対応
   if (flag === 1){//カット（その役柄のセリフ）が終わったら
-      console.log('セリフ終わり！');
-      num++;//sceanをインクリメント（次の役柄のシナリオへ）
+    console.log('セリフ終わり！',videoNum);
+    num++;//sceanをインクリメント（次の役柄のシナリオへ）
   } else {
-      console.log('セリフ続くよ');
+    console.log('セリフ続くよ');
   }
+}
+
+function videoCnt() {
+  videoZone.innerHTML=`
+  <video controls width="700" id="videoElem"> 
+    <source src="/static/video/${videoArr[videoNum]}.mp4" type="video/mp4" /> 
+  </video>`;
 }
 
 // ボタン押したら関連------------------------------------------------------------------------------------------

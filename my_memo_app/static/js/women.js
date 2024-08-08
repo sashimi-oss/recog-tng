@@ -20,6 +20,10 @@ let display = document.getElementById('display');
 let btn = document.getElementById('btn');
 let recStart = document.getElementById('recStart');
 let recStop = document.getElementById('recStop');
+let videoZone = document.querySelector('.videoZone');
+let videoNum = -2;
+let videoArr = ['onnnanoko', 'shoujo', 'seinennWoman', 'aunt', 'grandma'];
+const videoElem = document.getElementById('videoElem');
 let cutCnt = 0;
 let flag = 0;
 let num = 0;
@@ -32,11 +36,6 @@ let mediaStreamSource = null;
 let scriptProcessor = null;
 let audioData = [];
 let bufferSize = 1024;
-//******************************** */
-
-//******************************** */
-//以下、videoのための変数
-const videoElem = document.getElementById('videoElem');
 //******************************** */
 
 //sCutはsceanCutの略、シーンとカットを制御する関数
@@ -59,12 +58,21 @@ function sCut(sceanCnt) {
   }
 };
 
+function videoCnt() {
+  videoZone.innerHTML=`
+  <video controls width="700" id="videoElem"> 
+    <source src="/static/video/${videoArr[videoNum]}.mp4" type="video/mp4" /> 
+  </video>`;
+}
+
 //sCut関数実行のあと、flagチェックする関数
 function sCutFlag(){
   sCut(num);//真引数 num は 仮引数 sceanCntと対応
+  videoCnt();
   if (flag === 1){//カット（その役柄のセリフ）が終わったら
       console.log('セリフ終わり！');
       num++;//sceanをインクリメント（次の役柄のシナリオへ）
+      videoNum++;
   } else {
       console.log('セリフ続くよ');
   }
@@ -76,7 +84,7 @@ btn.addEventListener('click', () => {
 });
 
 recStart.addEventListener('click', () => {
-  videoElem.play();
+  // videoElem.play();
   sCutFlag();
 
   navigator.mediaDevices.getUserMedia({ audio: true, video: false })
@@ -135,9 +143,6 @@ function uploadAudio() {
     console.error('Error:', error);
   });
 }
-
-
-
 
 function encodeWAV(audioData, sampleRate) {
   let buffer = mergeBuffers(audioData);

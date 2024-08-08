@@ -1,16 +1,21 @@
 {% extends "base.html" %}
 
 {% block content %}
+
+{% set videoNum = 0 %}
+{% set videoArr = ['otokonoko', 'shounenn'] %}
     
-<div id="display"></div>
+<!-- <div id="display"></div>
 <button id="btn">ボタン</button>
 <button id="recStart" disabled>録音開始</button>
 <button id="recStop" disabled>録音停止</button>
-<a hidden id="download">Download</a>
+<a hidden id="download">Download</a> -->
 
-
-
+<!-- <div class="videoZone"> -->
+  <!-- <video controls width="250" id="videoElem">
+    <source src="{{url_for('static', filename='video/otokonoko.mp4')}}" type="video/mp4" />
+  </video> -->
+<!-- </div> -->
 
 <script type="text/javascript" src="{{url_for('static', filename='js/men.js')}}"></script>
-
 {% endblock %}
