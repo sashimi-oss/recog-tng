@@ -7,4 +7,5 @@
 #cache
 /my_app/__pycache__
 #audio
-/my_app/audio
+/my_app/audio/**
+!/my_app/audio/.gitkeep
