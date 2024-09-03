@@ -4,3 +4,7 @@
 #sql
 /db/sql/**
 !/db/sql/.gitkeep
+#cache
+/my_app/__pycache__
+#audio
+/my_app/audio
