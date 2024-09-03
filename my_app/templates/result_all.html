@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body style="background-color: skyblue;">
+
+  <h1>All Recogs</h1>
+  <table>
+    {% for recog in recogs %}
+      <tr class="role">
+          <td>{{recog.result}}</td>
+      </tr>
+    {% endfor %}
+  </table> 
+  <p>※一番上が一番目の役柄、一番下が最後にやった役柄</p>
+  
+<script type="text/javascript" src="{{url_for('static', filename='js/index.js')}}"></script>
+  
+<script>
+  let arr = ['男の子', '女の子', '少年', '少女', '青年男', '青年女', 'おじさん', 'おばさん', 'おじいさん', 'おばあさん'];
+  let role = document.getElementsByClassName('role');
+  // role[3].insertAdjacentHTML('afterbegin', `<span>${arr[0]}：</span>`)
+  for(let i = 0; i < 10; i++){
+    role[i].insertAdjacentHTML('afterbegin', `<td>${arr[i]}：</td>`)
+  }
+</script>
+</body>
+</html>
