@@ -9,3 +9,7 @@
 #audio
 /my_app/audio/**
 !/my_app/audio/.gitkeep
+#log
+/my_app/logs.log
+#csv
+/my_app/predict.csv
