@@ -3,7 +3,7 @@ FROM python:3.8
 
 WORKDIR /app
 ENV FLASK_APP=app
-COPY ./requirements.txt ./
+COPY ./requirements.txt /app
 
 RUN pip install --upgrade pip
 RUN pip install -r requirements.txt
@@ -20,3 +20,4 @@ RUN apt-get update
     # && rm -rf /var/lib/apt/lists/* \
 
 ENV LC_ALL ja_JP.UTF-8
+

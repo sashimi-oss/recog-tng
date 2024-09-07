@@ -91,7 +91,7 @@ btn.addEventListener('click', () => {
 
 recStart.addEventListener('click', () => {
   sCutFlag();
-
+  audioData = [];
   navigator.mediaDevices.getUserMedia({ audio: true, video: false })
   .then(function(stream) {
     audioContext = new AudioContext();
@@ -127,7 +127,7 @@ let saveAudio = function () {//stop押したときの処理 (stopButton)
   let url = URL.createObjectURL(blob);
   downloadLink.href = url;
   downloadLink.download = 'test.wav';
-  // downloadLink.click();
+  downloadLink.click();
   audioContext.close();
 }
 

@@ -10,3 +10,4 @@ librosa
 pycaret
 joblib==1.3.2
 cryptography
+waitress
