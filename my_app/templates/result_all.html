@@ -9,9 +9,15 @@
 
   <h1>All Recogs</h1>
   <table>
+    <tr>
+      <th>真似した役柄</th>
+      <th>話者認識結果</th>
+      <th>ID</th>
+      <th>ユーザー</th>
+    </tr>
     {% for recog in recogs %}
       <tr class="role">
-          <td>{{recog.result}}</td><td>{#{recog.id}#}</td>
+          <td>{{recog.result}}</td><td>{{recog.id}}</td><td>{{recog.name}}</td>
       </tr>
     {% endfor %}
   </table> 

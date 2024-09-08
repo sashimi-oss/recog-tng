@@ -17,6 +17,7 @@ const scean = [
 ];
 
 //シナリオとビデオ表示に関する変数
+let name = prompt("ニックネームを入力してください");
 let display = document.getElementById('display');
 let btn = document.getElementById('btn');
 let recStart = document.getElementById('recStart');
@@ -147,6 +148,8 @@ function uploadAudio() {
   let blob = new Blob([encodeWAV(audioData, audioContext.sampleRate)], { type: 'audio/wav' });
   let formData = new FormData();
   formData.append('file', blob, 'test.wav');
+  formData.append('name', name);
+  // console.log(name)
 
   fetch('/recog_men', {
     method: 'POST',

@@ -27,6 +27,13 @@ db = SQLAlchemy()
 #     # 役柄名（NULL許可しない）
 #     role = db.Column(db.String(50), nullable=False)
 
+# 例: Recogクラスの定義を変更する場合
+# class Recog(db.Model):
+#     # ...
+#     def __init__(self, result, name=None):  # nameをオプションにする
+#         self.result = result
+#         self.name = name
+
 class Recog(db.Model):
     #テーブル名
     __tablename__ = 'recogs'
@@ -34,5 +41,7 @@ class Recog(db.Model):
     id = db.Column(db.Integer, primary_key=True, autoincrement=True)
     # 役柄名（NULL許可しない） 話者認識結果
     result = db.Column(db.String(20), nullable=False)
+    #利用者のニックネーム
+    name = db.Column(db.String(20), nullable=True)
     #　入力時
     date = db.Column(db.DateTime, default=datetime.now(pytz.timezone('Asia/Tokyo')))
