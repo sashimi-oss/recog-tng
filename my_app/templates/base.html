@@ -13,6 +13,9 @@
         <button id="recStart" disabled>録音開始</button>
         <button id="recStop" disabled>録音停止</button>
         <a hidden id="download">Download</a>
+        <form action="{{url_for('index')}}" method="get">
+            <button type="submit" style="display:none;">戻る</button>
+        </form>
     </div>
     
     <div class="videoZone"></div>

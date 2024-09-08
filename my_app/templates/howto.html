@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>使い方</title>
+  <link rel="stylesheet" href="{{url_for('static', filename="css/style.css")}}">
+</head>
+<body>
+  <h1>使い方</h1>
+
+  <p class="howto_p">
+    この発話トレーニングシステムでは<br>男の子・少年・青年男・おじさん・おじいさん<br>
+    女の子・少女・青年女・おばさん・おばあさん<br>
+    の１０種類の役柄をトレーニングすることができます。
+  </p>
+  <p class="howto_p">
+    全ての役柄をトレーニングしたい場合は<a href="#">”全ての役柄”</a>を、<br>
+    男性のみの役柄をトレーニングしたい場合は<a href="#">”男性の役柄のみ”</a>、<br>
+    女性のみの役柄をトレーニングしたい場合は<a href="#">”女性の役柄のみ”</a><br>
+    をクリックしてください
+  </p>
+
+  <p class="howto_p">
+    例えば<a href="#">”男性の役柄のみ”</a>をクリックした場合、早速トレーニングが始まります。<br>
+    ボタンを押し進めることでシナリオを読み進めることができます。<br>
+    <img src="{{url_for('static', filename="explain_image/explain_btn.jpg")}}" alt=""><br><br>
+    あるところまで読み進めると、表示されている３Dモデルが「こんにちは」とあいさつをします。<br><br>
+    <img src="{{url_for('static', filename="explain_image/explain_greeting.jpg")}}" alt="" width="600px"><br><br>
+    あいさつを聞いたら、録音開始ボタンを押して真似して「こんにちは」を言ってください。<br>
+    <img src="{{url_for('static', filename="explain_image/explain_recStart.jpg")}}" alt=""><br><br>
+    言い終わったら録音停止ボタンを押して、またシナリオを読み進めてください。<br>
+    <img src="{{url_for('static', filename="explain_image/explain_recStop.jpg")}}" alt=""><br><br>
+    最後の役柄（この場合はおじいさん）まで繰り返したら戻るボタンからメイン画面に戻ってください。<br>
+  </p>
+
+  <p class="howto_p">
+    男性の役柄のみの発話トレーニングの結果は、<a href="#">”結果確認（男性のみor女性のみ）”</a>から確認することができます。<br>
+    全ての役柄をトレーニングした場合は、<a href="#">”結果確認（全ての役柄）”</a>から確認することができます。<br>
+  </p>
+  
+</body>
+</html>
