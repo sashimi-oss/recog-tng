@@ -21,6 +21,7 @@ let display = document.getElementById('display');
 let btn = document.getElementById('btn');
 let recStart = document.getElementById('recStart');
 let recStop = document.getElementById('recStop');
+let backBtn = document.getElementById('backBtn')
 let videoZone = document.querySelector('.videoZone');
 let videoNum = 0;
 let videoArr = ['otokonoko', 'shounenn', 'seinennMan', 'uncle', 'grandpa'];
@@ -74,6 +75,13 @@ function sCut(sceanCnt) {
 function sCutFlag(){
   sCut(num);
   if (flag === 1){
+
+    //戻るボタン表示に関する処理
+    if (num == scean.length - 1) {
+      backBtn.style.display = 'block';
+      backBtn.style.margin = '30px auto';
+    }
+
     num++;
     // console.log('セリフ終わり！',videoNum);
   } else {

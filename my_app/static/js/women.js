@@ -20,6 +20,7 @@ let display = document.getElementById('display');
 let btn = document.getElementById('btn');
 let recStart = document.getElementById('recStart');
 let recStop = document.getElementById('recStop');
+let backBtn = document.getElementById('backBtn');
 let videoZone = document.querySelector('.videoZone');
 let videoNum = 0;
 let videoArr = ['onnnanoko', 'shoujo', 'seinennWoman', 'aunt', 'grandma'];
@@ -67,11 +68,20 @@ function sCut(sceanCnt) {
 };
 
 //sCut関数実行のあと、flagチェックする関数
+//真引数 num は 仮引数 sceanCntと対応
+//カット（その役柄のセリフ）が終わったら
+//sceanをインクリメント（次の役柄のシナリオへ）
 function sCutFlag(){
-  sCut(num);//真引数 num は 仮引数 sceanCntと対応
-  if (flag === 1){//カット（その役柄のセリフ）が終わったら
-      console.log('セリフ終わり！');
-      num++;//sceanをインクリメント（次の役柄のシナリオへ）
+  sCut(num);
+  if (flag === 1){
+      
+      //戻るボタン表示に関する処理
+    if (num == scean.length - 1) {
+      backBtn.style.display = 'block';
+      backBtn.style.margin = '30px auto';
+    }
+
+      num++;
   } else {
       console.log('セリフ続くよ');
   }
