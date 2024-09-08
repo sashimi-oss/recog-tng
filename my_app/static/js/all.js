@@ -66,9 +66,10 @@ function sCut(sceanCnt) {
       cutCnt++;//カット（セリフ）をインクリメント
       if ((cutCnt === 2) && (sceanCnt != 1)) {//trueの時録音する。※sceanCnt条件は、あらすじ表示時に録音してしまうのを防ぐため
         recStart.removeAttribute('disabled');//押せる
-        recStop.removeAttribute('disabled');//押せる
         btn.setAttribute('disabled', 'disabled');//押せなくする
-      } else {
+      }
+      if ((cutCnt === 3) && (sceanCnt != 1)) {
+        recStop.removeAttribute('disabled');//押せる
         recStart.setAttribute('disabled', 'disabled');//押せなくする
       }
       flag = 0;

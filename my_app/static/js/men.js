@@ -57,9 +57,10 @@ function sCut(sceanCnt) {
       cutCnt++;//カット（セリフ）をインクリメント
       if ((cutCnt === 2) && (sceanCnt != 1)) {//trueの時録音する。※sceanCnt条件は、あらすじ表示時に録音してしまうのを防ぐため
         recStart.removeAttribute('disabled');//押せる
-        recStop.removeAttribute('disabled');//押せる
         btn.setAttribute('disabled', 'disabled');//押せなくする
-      } else {
+      }
+      if ((cutCnt === 3) && (sceanCnt != 1)) {
+        recStop.removeAttribute('disabled');//押せる
         recStart.setAttribute('disabled', 'disabled');//押せなくする
       }
       flag = 0;
@@ -67,11 +68,14 @@ function sCut(sceanCnt) {
 };
 
 //sCut関数実行のあと、flagチェックする関数
+//真引数 num は 仮引数 sceanCntと対応
+//カット（その役柄のセリフ）が終わったら
+//sceanをインクリメント（次の役柄のシナリオへ）
 function sCutFlag(){
-  sCut(num);//真引数 num は 仮引数 sceanCntと対応
-  if (flag === 1){//カット（その役柄のセリフ）が終わったら
-    console.log('セリフ終わり！',videoNum);
-    num++;//sceanをインクリメント（次の役柄のシナリオへ）
+  sCut(num);
+  if (flag === 1){
+    num++;
+    // console.log('セリフ終わり！',videoNum);
   } else {
     console.log('セリフ続くよ');
   }

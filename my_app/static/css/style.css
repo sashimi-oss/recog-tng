@@ -7,15 +7,17 @@ body {
 }
 
 .display {
-  order: 0;
+  order: 2;
 }
 
 .btnArea {
-  order: 2;
+  order: 3;
 }
 
 .videoZone {
   background-color: skyblue;
+  width: 700px;
+  height: 400px;
   order: 1;
 }
 

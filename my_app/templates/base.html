@@ -6,7 +6,8 @@
     <link rel="stylesheet" href="{{url_for('static', filename='css/style.css')}}">
 </head>
 <body>
-    <div id="display"></div>
+    <div id="display" class="display"></div>
+    <div class="videoZone"></div>
 
     <div class="btnArea">
         <button id="btn">ボタン</button>
@@ -18,7 +19,6 @@
         </form>
     </div>
     
-    <div class="videoZone"></div>
     {% block content %}{% endblock %}
 </body>
 </html>
