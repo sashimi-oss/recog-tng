@@ -13,7 +13,7 @@ services:
     environment:
         TZ: Asia/Tokyo
         FLASK_ENV: 'development'    #デバッグモードON
-    entrypoint: "sh build.sh"
+    # entrypoint: "sh build.sh"
 
   db:
     # platform: linux/x86_64 // この行を追加。
