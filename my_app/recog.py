@@ -47,13 +47,14 @@ def recog_men():
         
         file = request.files['file']
         user_name = request.form['name']
+        role = request.form['role']
         # print(user_name)
         file.save(os.path.join('./audio', 'uploaded.wav'))
         vcAct = {0:"おじいさん", 1:"少年", 2:"男の子", 3:"青年男", 4:"おじさん"}
         preVC = predictFunction.predictPostAudio(final_model, vcAct)
 
         # 登録処理
-        recog_result = Recog(result=preVC, name=user_name)
+        recog_result = Recog(result=preVC, name=user_name, role=role)
         db.session.add(recog_result)
         db.session.commit()
 

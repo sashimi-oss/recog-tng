@@ -16,6 +16,8 @@ const scean = [
   sceanGrandpa,
 ];
 
+const role = ['hoge', 'fuga', '男の子', '少年', '青年男', 'おじさん', 'おじいさん'];
+
 //シナリオとビデオ表示に関する変数
 let name = prompt("ニックネームを入力してください");
 let display = document.getElementById('display');
@@ -149,6 +151,7 @@ function uploadAudio() {
   let formData = new FormData();
   formData.append('file', blob, 'test.wav');
   formData.append('name', name);
+  formData.append('role', role[num]);
   // console.log(name)
 
   fetch('/recog_men', {

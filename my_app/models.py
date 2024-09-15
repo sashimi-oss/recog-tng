@@ -43,5 +43,7 @@ class Recog(db.Model):
     result = db.Column(db.String(20), nullable=False)
     #利用者のニックネーム
     name = db.Column(db.String(20), nullable=True)
+    #シナリオ上の登場人物
+    role = db.Column(db.String(20), nullable=True)
     #　入力時
     date = db.Column(db.DateTime, default=datetime.now(pytz.timezone('Asia/Tokyo')))
