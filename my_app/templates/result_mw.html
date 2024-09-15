@@ -16,9 +16,15 @@
         <th>ユーザー</th>
       </tr>
     {% for recog in recogs %}
-      <tr class="role">
-        <td>{{recog.role}}</td><td>{{recog.result}}</td><td>{{recog.id}}</td><td>{{recog.name}}</td>
-      </tr>
+      {% if recog.role == recog.result %}
+        <tr class="role" style="color: yellow;">
+          <td>{{recog.role}}</td><td>{{recog.result}}</td><td>{{recog.id}}</td><td>{{recog.name}}</td>
+        </tr>
+      {% else %}
+        <tr class="role">
+          <td>{{recog.role}}</td><td>{{recog.result}}</td><td>{{recog.id}}</td><td>{{recog.name}}</td>
+        </tr>
+      {% endif %}
     {% endfor %}
   </table>
   <p>※一番上が一番目の役柄、一番下が最後にやった役柄</p>

@@ -16,9 +16,15 @@
       <th>ユーザー</th>
     </tr>
     {% for recog in recogs %}
-      <tr class="role">
-          <td>{{recog.result}}</td><td>{{recog.id}}</td><td>{{recog.name}}</td>
-      </tr>
+      {% if recog.role == recog.result %}
+        <tr class="role" style="color:yellow;">
+            <td>{{recog.role}}</td><td>{{recog.result}}</td><td>{{recog.id}}</td><td>{{recog.name}}</td>
+        </tr>
+      {% else %}
+        <tr class="role">
+            <td>{{recog.role}}</td><td>{{recog.result}}</td><td>{{recog.id}}</td><td>{{recog.name}}</td>
+        </tr>
+      {% endif %}
     {% endfor %}
   </table> 
   <p>※一番上が一番目の役柄、一番下が最後にやった役柄</p>
@@ -26,12 +32,12 @@
 <script type="text/javascript" src="{{url_for('static', filename='js/index.js')}}"></script>
   
 <script>
-  let arr = ['男の子', '女の子', '少年', '少女', '青年男', '青年女', 'おじさん', 'おばさん', 'おじいさん', 'おばあさん'];
-  let role = document.getElementsByClassName('role');
-  // role[3].insertAdjacentHTML('afterbegin', `<span>${arr[0]}：</span>`)
-  for(let i = 0; i < 10; i++){
-    role[i].insertAdjacentHTML('afterbegin', `<td>${arr[i]}：</td>`)
-  }
+  // let arr = ['男の子', '女の子', '少年', '少女', '青年男', '青年女', 'おじさん', 'おばさん', 'おじいさん', 'おばあさん'];
+  // let role = document.getElementsByClassName('role');
+  // // role[3].insertAdjacentHTML('afterbegin', `<span>${arr[0]}：</span>`)
+  // for(let i = 0; i < 10; i++){
+  //   role[i].insertAdjacentHTML('afterbegin', `<td>${arr[i]}：</td>`)
+  // }
 </script>
 </body>
 </html>

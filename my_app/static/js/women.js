@@ -16,6 +16,8 @@ const scean = [
   sceanGrandma
 ];
 
+const role = ['hoge', 'fuga', '女の子', '少女', '青年女', 'おばさん', 'おばあさん'];
+
 let name = prompt("ニックネームを入力してください");
 let display = document.getElementById('display');
 let btn = document.getElementById('btn');
@@ -147,6 +149,7 @@ function uploadAudio() {
   let formData = new FormData();
   formData.append('file', blob, 'test.wav');
   formData.append('name', name);
+  formData.append('role', role[num]);
 
   fetch('/recog_women', {
     method: 'POST',

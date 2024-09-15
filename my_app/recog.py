@@ -23,6 +23,7 @@ def recog_all():
         
         file = request.files['file']
         user_name = request.form['name']
+        role = request.form['role']
         file.save(os.path.join('./audio', 'uploaded.wav'))
         vcAct = {0:"おじいさん", 1:"おばあさん", 2:"少年",
             3:"男の子", 4:"女の子", 5:"少女",
@@ -30,7 +31,7 @@ def recog_all():
         preVC = predictFunction.predictPostAudio(final_model, vcAct)
 
         # 登録処理
-        recog_result = Recog(result=preVC, name=user_name)
+        recog_result = Recog(result=preVC, name=user_name, role=role)
         db.session.add(recog_result)
         db.session.commit()
 
@@ -71,12 +72,13 @@ def recog_women():
         
         file = request.files['file']
         user_name = request.form['name']
+        role = request.form['role']
         file.save(os.path.join('./audio', 'uploaded.wav'))
         vcAct = {0:"おばあさん", 1:"女の子", 2:"少女", 3:"青年女", 4:"おばさん"}
         preVC = predictFunction.predictPostAudio(final_model, vcAct)
 
         # 登録処理
-        recog_result = Recog(result=preVC, name=user_name)
+        recog_result = Recog(result=preVC, name=user_name, role=role)
         db.session.add(recog_result)
         db.session.commit()
 
