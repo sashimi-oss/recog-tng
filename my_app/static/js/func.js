@@ -1,4 +1,15 @@
-
+//シナリオとビデオ表示に関する変数
+let name = prompt("ニックネームを入力してください");
+let display = document.getElementById('display');
+let btn = document.getElementById('btn');
+let recStart = document.getElementById('recStart');
+let recStop = document.getElementById('recStop');
+let backBtn = document.getElementById('backBtn')
+let videoZone = document.querySelector('.videoZone');
+let videoNum = 0;
+let cutCnt = 0;
+let flag = 0;
+let num = 0;
 
 //sCutはsceanCutの略、シーンとカットを制御する関数
 function sCut(sceanCnt) {
@@ -57,7 +68,40 @@ function videoCnt() {
   </video>`;
 }
 
+//******************************** */
+// 以下Recorederのための変数
+const downloadLink = document.getElementById('download');
+let audioContext = null;
+let mediaStreamSource = null;
+let scriptProcessor = null;
+let audioData = [];
+let bufferSize = 1024;
+//******************************** */
 
+// ボタン押したら関連------------------------------------------------------------------------------------------
+btn.addEventListener('click', () => {
+  sCutFlag();
+});
+
+recStart.addEventListener('click', () => {
+  sCutFlag();
+  audioData = [];
+  navigator.mediaDevices.getUserMedia({ audio: true, video: false })
+  .then(function(stream) {
+    audioContext = new AudioContext();
+    scriptProcessor = audioContext.createScriptProcessor(bufferSize, 1, 1);
+    mediaStreamSource = audioContext.createMediaStreamSource(stream);
+    mediaStreamSource.connect(scriptProcessor);
+    scriptProcessor.onaudioprocess = function(e) {
+      if (recStop.disabled) return;
+      audioData.push(new Float32Array(e.inputBuffer.getChannelData(0)));
+    };
+    scriptProcessor.connect(audioContext.destination);
+  });
+
+});
+
+// ボタン押したら関連------------------------------------------------------------------------------------------
 
   
 // *************************************************************************************************
@@ -66,12 +110,12 @@ let saveAudio = function () {//stop押したときの処理 (stopButton)
   let blob = new Blob([encodeWAV(audioData, audioContext.sampleRate)], { type: 'audio/wav' });
   let url = URL.createObjectURL(blob);
   downloadLink.href = url;
-  downloadLink.download = 'test.wav';
+  downloadLink.download = name;
   downloadLink.click();
   audioContext.close();
 }
 
-function uploadAudio() {
+function uploadAudio(postPath) {
   let blob = new Blob([encodeWAV(audioData, audioContext.sampleRate)], { type: 'audio/wav' });
   let formData = new FormData();
   formData.append('file', blob, 'test.wav');
@@ -79,7 +123,7 @@ function uploadAudio() {
   formData.append('role', role[num]);
   // console.log(name)
 
-  fetch('/recog_men', {
+  fetch(postPath, {
     method: 'POST',
     body: formData
   })

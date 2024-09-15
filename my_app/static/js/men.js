@@ -19,51 +19,13 @@ const scean = [
 const role = ['hoge', 'fuga', '男の子', '少年', '青年男', 'おじさん', 'おじいさん'];
 
 //シナリオとビデオ表示に関する変数
-let name = prompt("ニックネームを入力してください");
-let display = document.getElementById('display');
-let btn = document.getElementById('btn');
-let recStart = document.getElementById('recStart');
-let recStop = document.getElementById('recStop');
-let backBtn = document.getElementById('backBtn')
-let videoZone = document.querySelector('.videoZone');
-let videoNum = 0;
 let videoArr = ['otokonoko', 'shounenn', 'seinennMan', 'uncle', 'grandpa'];
-let cutCnt = 0;
-let flag = 0;
-let num = 0;
 
-//******************************** */
-// 以下Recorederのための変数
-const downloadLink = document.getElementById('download');
-let audioContext = null;
-let mediaStreamSource = null;
-let scriptProcessor = null;
-let audioData = [];
-let bufferSize = 1024;
-//******************************** */
+
+
 
 // ボタン押したら関連------------------------------------------------------------------------------------------
-btn.addEventListener('click', () => {
-  sCutFlag();
-});
 
-recStart.addEventListener('click', () => {
-  sCutFlag();
-  audioData = [];
-  navigator.mediaDevices.getUserMedia({ audio: true, video: false })
-  .then(function(stream) {
-    audioContext = new AudioContext();
-    scriptProcessor = audioContext.createScriptProcessor(bufferSize, 1, 1);
-    mediaStreamSource = audioContext.createMediaStreamSource(stream);
-    mediaStreamSource.connect(scriptProcessor);
-    scriptProcessor.onaudioprocess = function(e) {
-      if (recStop.disabled) return;
-      audioData.push(new Float32Array(e.inputBuffer.getChannelData(0)));
-    };
-    scriptProcessor.connect(audioContext.destination);
-  });
-
-});
 
 recStop.addEventListener('click', () => {
   sCutFlag();
@@ -72,6 +34,6 @@ recStop.addEventListener('click', () => {
 
   saveAudio();
   console.log('saved wav');
-  uploadAudio();
+  uploadAudio('/recog_men');
 });
 // ボタン押したら関連------------------------------------------------------------------------------------------
