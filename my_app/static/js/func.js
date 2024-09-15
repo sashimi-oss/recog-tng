@@ -147,16 +147,3 @@ function writeString(view, offset, string) {
   }
 }
 // *************************************************************************************************
-
-export {
-  sCut,
-  sCutFlag,
-  videoCnt,
-  saveAudio,
-  uploadAudio,
-  encodeWAV,
-  mergeBuffers,
-  createDataView,
-  floatTo16BitPCM,
-  writeString,
-}

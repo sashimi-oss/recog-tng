@@ -1,16 +1,3 @@
-import {
-  sCut,
-  sCutFlag,
-  videoCnt,
-  saveAudio,
-  uploadAudio,
-  encodeWAV,
-  mergeBuffers,
-  createDataView,
-  floatTo16BitPCM,
-  writeString
-} from './func.js'
-
 const sceanTitle = ['「森のいたずらっこ妖精くん」'];
 const sceanOverview = ['知ってますか？', '森に住む妖精って、生まれつき名前のついた妖精なのではなくて、','その子が成りたい姿の妖精になっていくんですよ。','でも、どうやら、そこにいる妖精くんは、','自分がどんな妖精になりたいのか、まだわからないようです。'];
 const sceanOtokonoko = ['おや、そこに男の子がやってきました。', '男の子「こんにちは」', '妖精さん「こんにちは」', '男の子はニコっとして、走っていきました。', '妖精さんも走って追いかけました。', 'ふたりは、時間を忘れて楽しみました。', '妖精さんは「今日は楽しい一日だったな」とおもいました。'];
