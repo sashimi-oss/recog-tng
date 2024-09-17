@@ -34,10 +34,10 @@ def all():
 def result_all():
     recogs = Recog.query.order_by(Recog.id.desc()).limit(10).all()
     recogs.reverse()  # 最新の10件を古い順に並び替え
-    print('-------------------------------------------------')
-    print(recogs[0].__dict__)
-    for recog in recogs:  # recogsの中身を表示
-        print(recog.result)
+    # print('-------------------------------------------------')
+    # print(recogs[0].__dict__)
+    # for recog in recogs:  # recogsの中身を表示
+    #     print(recog.result)
     result_for_unique = []
     for i in range(10):
         result_for_unique.append(recogs[i].result)
