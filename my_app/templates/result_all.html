@@ -28,6 +28,16 @@
     {% endfor %}
   </table> 
   <p>※一番上が一番目の役柄、一番下が最後にやった役柄</p>
+  <p>
+    10人と出会い、妖精さんは{{unique_cnt}}人の姿になれるようになりました。
+    この森で妖精さんはこれからも様々な人に出会うでしょう。
+    次はどんな人が来るのでしょうか。
+  </p>
+  <!-- <p>ユニークな結果の件数: {#{ unique_results | length }#}</p> -->
+  
+  <form action="{{url_for('index')}}" method="get">
+    <button type="submit">戻る</button>
+  </form>
   
 <script type="text/javascript" src="{{url_for('static', filename='js/index.js')}}"></script>
   

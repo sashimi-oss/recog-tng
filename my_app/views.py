@@ -34,7 +34,14 @@ def all():
 def result_all():
     recogs = Recog.query.order_by(Recog.id.desc()).limit(10).all()
     recogs.reverse()  # 最新の10件を古い順に並び替え
-    return render_template("result_all.html", recogs = recogs)
+    # print('-------------------------------------------------')
+    # print(recogs[0].__dict__)
+    result_for_unique = []
+    for i in range(5):
+        result_for_unique = recogs[i]['result']
+    unique_results = set(result_for_unique)
+    unique_cnt = len(unique_results)
+    return render_template("result_all.html", recogs = recogs, unique_cnt = unique_cnt)
 
 #結果_men_or_women
 @app.route("/result_mw")

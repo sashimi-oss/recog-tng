@@ -28,6 +28,16 @@
     {% endfor %}
   </table>
   <p>※一番上が一番目の役柄、一番下が最後にやった役柄</p>
+  <p>
+    ５人と出会い、妖精さんは〇人の姿になれるようになりました。
+    この森で妖精さんはこれからも様々な人に出会うでしょう。
+    次はどんな人が来るのでしょうか。
+  </p>
+
+  <form action="{{url_for('index')}}" method="get">
+    <button type="submit">戻る</button>
+  </form>
+  
 <script type="text/javascript" src="{{url_for('static', filename='js/index.js')}}"></script>
 <script>
   // let arr = ['男の子or女の子', '少年or少女', '青年男or青年女', 'おじさんorおばさん', 'おじいさんorおばあさん'];
