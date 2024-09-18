@@ -101,6 +101,16 @@ recStart.addEventListener('click', () => {
 
 });
 
+recStop.addEventListener('click', () => {
+  sCutFlag();
+  recStop.setAttribute('disabled', 'disabled');//押せなくする
+  btn.removeAttribute('disabled');//押せる
+
+  saveAudio();
+  console.log('saved wav');
+  uploadAudio(path);
+});
+
 // ボタン押したら関連------------------------------------------------------------------------------------------
 
   

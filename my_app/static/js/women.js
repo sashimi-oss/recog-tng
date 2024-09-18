@@ -24,14 +24,6 @@ let videoArr = ['onnnanoko', 'shoujo', 'seinennWoman', 'aunt', 'grandma'];
 
 // ボタン押したら関連------------------------------------------------------------------------------------------
 
-recStop.addEventListener('click', () => {
-  sCutFlag();
-  recStop.setAttribute('disabled', 'disabled');//押せなくする
-  btn.removeAttribute('disabled');//押せる
-
-  saveAudio();
-  console.log('saved wav');
-  uploadAudio('/recog_women');
-});
+const path = '/recog_women';
 
 // ボタン押したら関連------------------------------------------------------------------------------------------

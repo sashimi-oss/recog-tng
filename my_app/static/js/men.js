@@ -26,14 +26,6 @@ let videoArr = ['otokonoko', 'shounenn', 'seinennMan', 'uncle', 'grandpa'];
 
 // ボタン押したら関連------------------------------------------------------------------------------------------
 
+const path = '/recog_men';
 
-recStop.addEventListener('click', () => {
-  sCutFlag();
-  recStop.setAttribute('disabled', 'disabled');//押せなくする
-  btn.removeAttribute('disabled');//押せる
-
-  saveAudio();
-  console.log('saved wav');
-  uploadAudio('/recog_men');
-});
 // ボタン押したら関連------------------------------------------------------------------------------------------
