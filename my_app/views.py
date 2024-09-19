@@ -62,8 +62,10 @@ def result_mw():
     unique_results = set(result_for_unique)
     unique_cnt = len(unique_results)
     print('------------------------result_mw-------------------------')
-    # print(recogs)
-    # print(recogs[0].__dict__)
+    if decoded[0] == decoded[1]:
+        print('同じです。。。')
+    if recogs[0].blob == recogs[1].blob:
+        print('blob同じです。。。')
     return render_template("result_mw.html", recogs = recogs, unique_cnt = unique_cnt, decoded = decoded)
 
 #使い方
