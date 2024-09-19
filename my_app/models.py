@@ -1,6 +1,7 @@
 from flask_sqlalchemy import SQLAlchemy
 from datetime import datetime
 import pytz
+from sqlalchemy.dialects import mysql
 
 # Flask-SQLAlchemyの生成
 db = SQLAlchemy()
@@ -45,5 +46,7 @@ class Recog(db.Model):
     name = db.Column(db.String(20), nullable=True)
     #シナリオ上の登場人物
     role = db.Column(db.String(20), nullable=True)
+    #mediumblobデータ（音声データ）の保存
+    blob = db.Column(mysql.MEDIUMBLOB)
     #　入力時
     date = db.Column(db.DateTime, default=datetime.now(pytz.timezone('Asia/Tokyo')))

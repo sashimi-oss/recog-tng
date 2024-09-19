@@ -132,6 +132,13 @@ function uploadAudio(postPath) {
   formData.append('name', name);
   formData.append('role', role[num]);
   // console.log(name)
+  let reader = new FileReader();
+  reader.onload = function(event) {
+      let binaryData = event.target.result; // ここにバイナリデータが格納される
+      console.log(binaryData); // バイナリデータを確認
+      // ここでbinaryDataを使用して処理を続けることができます
+  };
+  reader.readAsArrayBuffer(blob);
 
   fetch(postPath, {
     method: 'POST',

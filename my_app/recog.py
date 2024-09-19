@@ -3,6 +3,7 @@ from app import app
 from models import db, Recog
 import os, predictFunction
 import pickle
+import base64
 
 # ==================================================
 # ルーティング
@@ -31,7 +32,7 @@ def recog_all():
         preVC = predictFunction.predictPostAudio(final_model, vcAct)
 
         # 登録処理
-        recog_result = Recog(result=preVC, name=user_name, role=role)
+        recog_result = Recog(result=preVC, name=user_name, role=role, blob=file)
         db.session.add(recog_result)
         db.session.commit()
 
@@ -54,8 +55,18 @@ def recog_men():
         vcAct = {0:"おじいさん", 1:"少年", 2:"男の子", 3:"青年男", 4:"おじさん"}
         preVC = predictFunction.predictPostAudio(final_model, vcAct)
 
+        #Base64エンコード処理
+        # audio_data = file.read()
+        # base64_audio = base64.b64encode(audio_data)
+        print('---------------------recog_men posts------------------------')
+        test_wav_path = os.path.join('./audio', 'uploaded.wav')
+        with open(test_wav_path, 'rb') as f:
+            data = f.read()
+        base64_audio = base64.b64encode(data)
+        
+
         # 登録処理
-        recog_result = Recog(result=preVC, name=user_name, role=role)
+        recog_result = Recog(result=preVC, name=user_name, role=role, blob=base64_audio)
         db.session.add(recog_result)
         db.session.commit()
 
@@ -78,7 +89,7 @@ def recog_women():
         preVC = predictFunction.predictPostAudio(final_model, vcAct)
 
         # 登録処理
-        recog_result = Recog(result=preVC, name=user_name, role=role)
+        recog_result = Recog(result=preVC, name=user_name, role=role, blob=file)
         db.session.add(recog_result)
         db.session.commit()
 
