@@ -39,11 +39,14 @@ def result_all():
     # for recog in recogs:  # recogsの中身を表示
     #     print(recog.result)
     result_for_unique = []
+    decoded = []
     for i in range(10):
         result_for_unique.append(recogs[i].result)
+    for i in range(10):
+        decoded.append(recogs[i].blob.decode('utf-8'))
     unique_results = set(result_for_unique)
     unique_cnt = len(unique_results)
-    return render_template("result_all.html", recogs = recogs, unique_cnt = unique_cnt)
+    return render_template("result_all.html", recogs = recogs, unique_cnt = unique_cnt, decoded = decoded)
 
 #結果_men_or_women
 @app.route("/result_mw")
@@ -59,7 +62,7 @@ def result_mw():
     unique_results = set(result_for_unique)
     unique_cnt = len(unique_results)
     print('------------------------result_mw-------------------------')
-    print(recogs)
+    # print(recogs)
     # print(recogs[0].__dict__)
     return render_template("result_mw.html", recogs = recogs, unique_cnt = unique_cnt, decoded = decoded)
 
