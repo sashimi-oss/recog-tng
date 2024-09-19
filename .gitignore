@@ -11,6 +11,8 @@
 #audio
 /my_app/audio/**
 !/my_app/audio/.gitkeep
+/my_app/static/audio/**
+!/my_app/static/audio/.gitkeep
 #log
 /my_app/logs.log
 #csv
