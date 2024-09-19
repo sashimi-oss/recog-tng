@@ -5,9 +5,9 @@ import librosa
 from pycaret.classification import *
 
 
-def predictPostAudio(final_model, vcAct):
+def predictPostAudio(final_model, vcAct, role):
 
-    y, sr = librosa.load('./audio/uploaded.wav')
+    y, sr = librosa.load(f'./static/audio/{role}.wav')
     mfcc = librosa.feature.mfcc(y=y, sr=sr)
 
     mfcc = np.average(mfcc, axis=1)

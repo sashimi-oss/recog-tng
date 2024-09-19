@@ -24,11 +24,11 @@ def recog_all():
         file = request.files['file']
         user_name = request.form['name']
         role = request.form['role']
-        file.save(os.path.join('./audio', 'uploaded.wav'))
+        file.save(os.path.join('./static/audio', 'uploaded.wav'))
         vcAct = {0:"おじいさん", 1:"おばあさん", 2:"少年",
             3:"男の子", 4:"女の子", 5:"少女",
             6:"青年女", 7:"青年男", 8:"おじさん", 9:"おばさん"}
-        preVC = predictFunction.predictPostAudio(final_model, vcAct)
+        preVC = predictFunction.predictPostAudio(final_model, vcAct, role)
 
         # 登録処理
         recog_result = Recog(result=preVC, name=user_name, role=role)
@@ -50,9 +50,10 @@ def recog_men():
         user_name = request.form['name']
         role = request.form['role']
         # print(user_name)
-        file.save(os.path.join('./audio', 'uploaded.wav'))
+        # file.save(os.path.join('./audio', role + '.wav'))
+        file.save(os.path.join('./static/audio', role + '.wav'))
         vcAct = {0:"おじいさん", 1:"少年", 2:"男の子", 3:"青年男", 4:"おじさん"}
-        preVC = predictFunction.predictPostAudio(final_model, vcAct)
+        preVC = predictFunction.predictPostAudio(final_model, vcAct, role)
 
         # 登録処理
         recog_result = Recog(result=preVC, name=user_name, role=role)
@@ -73,9 +74,9 @@ def recog_women():
         file = request.files['file']
         user_name = request.form['name']
         role = request.form['role']
-        file.save(os.path.join('./audio', 'uploaded.wav'))
+        file.save(os.path.join('./static/audio', 'uploaded.wav'))
         vcAct = {0:"おばあさん", 1:"女の子", 2:"少女", 3:"青年女", 4:"おばさん"}
-        preVC = predictFunction.predictPostAudio(final_model, vcAct)
+        preVC = predictFunction.predictPostAudio(final_model, vcAct, role)
 
         # 登録処理
         recog_result = Recog(result=preVC, name=user_name, role=role)
