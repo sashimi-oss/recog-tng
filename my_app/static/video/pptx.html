@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  
+  <div class="display"></div>
+<script>
+const display = document.getElementsByClassName('display')[0];
+let videoArr = ['otokonoko', 'onnnanoko', 'shounenn', 'shoujo', 'seinennMan', 'seinennWoman', 'uncle', 'aunt', 'grandpa', 'grandma'];
+
+for (let i = 0; i < 10; i++){
+  display.insertAdjacentHTML('beforeend',`
+  <video controls width="700" id="videoElem"> 
+    <source src="./${videoArr[i]}.mp4" type="video/mp4" /> 
+  </video>`
+ );
+}
+
+</script>
+</body>
+</html>
