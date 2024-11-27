@@ -26,9 +26,9 @@ const scean = [
   sceanGrandma
 ];
 
-const role = ['hoge', 'fuga', '男の子', '女の子', '少年', '少女', '青年男', '青年女', 'おじさん', 'おばさん', 'おじいさん', 'おばあさん'];
+const role = ['hoge', 'fuga', '男の子', '女の子', '少年', '少女', '成人男性', '成人女性', 'おじさん', 'おばさん', 'おじいさん', 'おばあさん'];
 
-let videoArr = ['otokonoko', 'onnnanoko', 'shounenn', 'shoujo', 'seinennMan', 'seinennWoman', 'uncle', 'aunt', 'grandpa', 'grandma'];
+let videoArr = ['otokonoko', 'onnnanoko', 'shounenn', 'shoujo', 'man', 'woman', 'uncle', 'aunt', 'grandpa', 'grandma'];
 
 
 // ボタン押したら関連------------------------------------------------------------------------------------------

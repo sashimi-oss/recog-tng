@@ -41,8 +41,8 @@ class Recog(db.Model):
     id = db.Column(db.Integer, primary_key=True, autoincrement=True)
     # 役柄名（NULL許可しない） 話者認識結果
     result = db.Column(db.String(20), nullable=False)
-    #利用者のニックネーム
-    name = db.Column(db.String(20), nullable=True)
+    #利用者の名前
+    name = db.Column(db.String(200), nullable=True)
     #シナリオ上の登場人物
     role = db.Column(db.String(20), nullable=True)
     #　入力時

@@ -16,10 +16,10 @@ const scean = [
   sceanGrandpa,
 ];
 
-const role = ['hoge', 'fuga', '男の子', '少年', '青年男', 'おじさん', 'おじいさん'];
+const role = ['hoge', 'fuga', '男の子', '少年', '成人男性', 'おじさん', 'おじいさん'];
 
 //シナリオとビデオ表示に関する変数
-let videoArr = ['otokonoko', 'shounenn', 'seinennMan', 'uncle', 'grandpa'];
+let videoArr = ['otokonoko', 'shounenn', 'man', 'uncle', 'grandpa'];
 
 
 

@@ -16,9 +16,9 @@ const scean = [
   sceanGrandma
 ];
 
-const role = ['hoge', 'fuga', '女の子', '少女', '青年女', 'おばさん', 'おばあさん'];
+const role = ['hoge', 'fuga', '女の子', '少女', '成人女性', 'おばさん', 'おばあさん'];
 
-let videoArr = ['onnnanoko', 'shoujo', 'seinennWoman', 'aunt', 'grandma'];
+let videoArr = ['onnnanoko', 'shoujo', 'woman', 'aunt', 'grandma'];
 
 
 

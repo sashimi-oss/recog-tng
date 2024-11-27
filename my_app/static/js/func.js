@@ -1,5 +1,5 @@
 //シナリオとビデオ表示に関する変数
-let name = prompt("ニックネームを入力してください");
+let name = prompt("名前を入力してください");
 let display = document.getElementById('display');
 let btn = document.getElementById('btn');
 let recStart = document.getElementById('recStart');

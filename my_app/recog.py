@@ -14,7 +14,7 @@ def recog_all():
     # POST時
     if request.method == "POST":
         
-        with open('all.pickle', mode='rb') as f:
+        with open('./pickle/mabikiSumLdaAll.pickle', mode='rb') as f:
             final_model = pickle.load(f)
 
         # db.drop_all()
@@ -25,12 +25,10 @@ def recog_all():
         user_name = request.form['name']
         role = request.form['role']
         file.save(os.path.join('./static/audio', role + '.wav'))
-        vcAct = {0:"おじいさん", 1:"おばあさん", 2:"少年",
-            3:"男の子", 4:"女の子", 5:"少女",
-            6:"青年女", 7:"青年男", 8:"おじさん", 9:"おばさん"}
-        # vcAct = {0:"男の子", 1:"少年", 2:"青年男",
-        #     3:"おじさん", 4:"おじいさん", 5:"女の子",
-        #     6:"少女", 7:"青年女", 8:"おばさん", 9:"おばあさん"}
+        
+        vcAct = {0:"男の子", 1:"少年", 2:"成人男性",
+            3:"おじさん", 4:"おじいさん", 5:"女の子",
+            6:"少女", 7:"成人女性", 8:"おばさん", 9:"おばあさん"}
         preVC = predictFunction.predictPostAudio(final_model, vcAct, role)
 
         # 登録処理
@@ -46,7 +44,7 @@ def recog_men():
     # POST時
     if request.method == "POST":
         
-        with open('men.pickle', mode='rb') as f:
+        with open('./pickle/mabikiSumLdaMen.pickle', mode='rb') as f:
             final_model = pickle.load(f)
         
         file = request.files['file']
@@ -55,8 +53,8 @@ def recog_men():
         # print(user_name)
         # file.save(os.path.join('./audio', role + '.wav'))
         file.save(os.path.join('./static/audio', role + '.wav'))
-        vcAct = {0:"おじいさん", 1:"少年", 2:"男の子", 3:"青年男", 4:"おじさん"}
-        # vcAct = {0:"男の子", 1:"少年", 2:"青年男", 3:"おじさん", 4:"おじいさん"}
+
+        vcAct = {0:"男の子", 1:"少年", 2:"成人男性", 3:"おじさん", 4:"おじいさん"}
         preVC = predictFunction.predictPostAudio(final_model, vcAct, role)
 
         # 登録処理
@@ -72,15 +70,15 @@ def recog_women():
     # POST時
     if request.method == "POST":
         
-        with open('women.pickle', mode='rb') as f:
+        with open('./pickle/mabikiSumLdaWomen.pickle', mode='rb') as f:
             final_model = pickle.load(f)
         
         file = request.files['file']
         user_name = request.form['name']
         role = request.form['role']
         file.save(os.path.join('./static/audio', role + '.wav'))
-        vcAct = {0:"おばあさん", 1:"女の子", 2:"少女", 3:"青年女", 4:"おばさん"}
-        # vcAct = {0:"女の子", 1:"少女", 2:"青年女", 3:"おばさん", 4:"おばあさん"}
+
+        vcAct = {0:"女の子", 1:"少女", 2:"成人女性", 3:"おばさん", 4:"おばあさん"}
         preVC = predictFunction.predictPostAudio(final_model, vcAct, role)
 
         # 登録処理

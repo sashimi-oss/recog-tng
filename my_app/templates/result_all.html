@@ -14,17 +14,21 @@
       <th>話者認識結果</th>
       <th>ID</th>
       <th>ユーザー</th>
+      <th>自分の音声</th>
+      <th>お手本の音声</th>
     </tr>
     {% for recog in recogs %}
       {% if recog.role == recog.result %}
         <tr class="role" style="color:yellow;">
             <td>{{recog.role}}</td><td>{{recog.result}}</td><td>{{recog.id}}</td><td>{{recog.name}}</td>
             <td><audio controls><source src="{{url_for('static', filename='audio/'+recog.role+'.wav')}}" type="audio/wav"> </audio></td>
+            <td><audio controls><source src="{{url_for('static', filename='audio/example/'+recog.role+'.wav')}}" type="audio/wav"> </audio></td>
         </tr>
       {% else %}
         <tr class="role">
-            <td>{{recog.role}}</td><td>{{recog.result}}</td><td>{{recog.id}}</td><td>{{recog.name}}</td>
-            <td><audio controls><source src="{{url_for('static', filename='audio/'+recog.role+'.wav')}}" type="audio/wav"> </audio></td>
+          <td>{{recog.role}}</td><td>{{recog.result}}</td><td>{{recog.id}}</td><td>{{recog.name}}</td>
+          <td><audio controls><source src="{{url_for('static', filename='audio/'+recog.role+'.wav')}}" type="audio/wav"> </audio></td>
+          <td><audio controls><source src="{{url_for('static', filename='audio/example/'+recog.role+'.wav')}}" type="audio/wav"> </audio></td>
         </tr>
       {% endif %}
     {% endfor %}
