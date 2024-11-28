@@ -57,6 +57,15 @@ def result_mw():
     unique_cnt = len(unique_results)
     return render_template("result_mw.html", recogs = recogs, unique_cnt = unique_cnt)
 
+#tenflag_judge
+@app.route('/tenflag_judge')
+def tenflag_judge():
+    recog = Recog.query.order_by(Recog.date.desc()).first()
+    if recog.tenflag:
+        return redirect(url_for('result_all'))
+    else:
+        return redirect(url_for('result_mw'))
+    
 #使い方
 @app.route("/howto")
 def howto():
@@ -65,6 +74,13 @@ def howto():
 @app.route('/')
 def root():
     return redirect(url_for('index'))
+
+#admin 管理者
+@app.route('/admin')
+def admin():
+    recogs = Recog.query.order_by(Recog.date.asc()).all()
+
+    return render_template('admin.html', recogs = recogs)
 
 
 
